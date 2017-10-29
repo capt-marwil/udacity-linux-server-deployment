@@ -58,8 +58,8 @@ Changed `#User rules for ubuntu` to `grader ALL=(ALL) NOPASSWD:ALL`
 - Changed Option `PasswordAuthentication` from `yes` to `no` (already active on Lightsail Instance by default)
 - restarted ssh service `sudo service ssh restart`
 
-## Firewall installation ##
-### Installed the firewall +++
+## Securing the server ##
+### Installed the firewall ###
 `sudo apt-get install ufw`
 
 ### Explored the firewall status ###
@@ -83,23 +83,24 @@ Changed `#User rules for ubuntu` to `grader ALL=(ALL) NOPASSWD:ALL`
 * Made sure that all the required python modules as describe in my project README were installed https://github.com/capt-marwil/Udacity-Item-Catalog
 * Set up a directory structure, virtual env and files as described in this guide by Digital Ocean https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
 * Ending up with a project structure like this:
-|-/var/www/Catalog/
-|-----------------Catalog/
-|-----------------catalog.wsgi
-|-----------------------------__init__.py
-|-----------------------------client_secrets.json
-|-----------------------------fb_client_secret.json
-|-----------------------------populate_database.py
-|-----------------------------setup_database.py
-|-----------------------------static/
-|-----------------------------templates/
-|-----------------------------venv/
+- |-/var/www/Catalog/
+- |-----------------Catalog/
+- |-----------------catalog.wsgi
+- |-----------------------------__init__.py
+- |-----------------------------client_secrets.json
+- |-----------------------------fb_client_secret.json
+- |-----------------------------populate_database.py
+- |-----------------------------setup_database.py
+- |-----------------------------static/
+- |-----------------------------templates/
+- |-----------------------------venv/
+
 * directories /var/www/Catalog/Catalog/static and /var/www/Catalog/Catalog/templates containing css files, javascrict, img, template files etc.
 * Changed the SQL Alchemy Engine object in __init__.py, populate_database.py and setup_database.py from sqlite to postgresql
 * Restarted the webserver with `sudo service apache2 restart`
 * The Catalog App can be reached at http://18.194.127.232/
 
-### Problems left to solve ###
+## Problems left to solve ##
 * It's currently not possible to login with Google or Facebook as both API don't recognize the new ip address and I can't figure out how to change the params
 in the json strings for javascript origin and redirect uri
 
