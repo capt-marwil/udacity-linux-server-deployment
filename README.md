@@ -122,3 +122,7 @@ Enforced password use for user grader and user by altering
 ## Problems left to solve ##
 * It's currently not possible to login with Google or Facebook as both API don't recognize the new ip address and I can't figure out how to change the params
 in the json strings for javascript origin and redirect uri
+* Installed munin as suggested following these guides (https://www.digitalocean.com/community/tutorials/how-to-install-the-munin-monitoring-tool-on-ubuntu-14-04,
+https://www.digitalocean.com/community/tutorials/how-to-install-munin-on-an-ubuntu-vps,
+http://www.ubuntugeek.com/install-munin-monitoring-tool-on-ubuntu-16-10-yakkety-yak-server.html)
+But keep running into 'Forbidden You don't have permission to access /munin on this server.' Message.
