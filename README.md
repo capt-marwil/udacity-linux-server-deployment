@@ -28,6 +28,13 @@
 `sudo apt-get install postgresql` 
 `sudo apt-get install memcache`
 
+### Configure machine for automatic security updates ###
+* installed the unattended-upgrades package `sudo apt-get install unattended-upgrades`
+* enabled it with: `sudo dpkg-reconfigure --priority=low unattended-upgrades`
+* edited the file `/etc/apt/apt.conf.d/50unattended-upgrades` for Automatic-Reboot
+* made sure that package "update-notifier-common" is installed
+
+
 ## Configuring Users ##
 ### Installed finger ###
 `sudo apt-get install finger`
@@ -39,6 +46,10 @@
 `sudo cp /etc/sudoers.d/90-cloud-init-users cp /etc/sudoers.d/grader`
 `sudo nano /etc/sudoers.d/grader`
 Changed `#User rules for ubuntu` to `grader ALL=(ALL) NOPASSWD:ALL`
+Enforced password use for user grader and user by altering
+`grader ALL=(ALL) PASSWD:ALL` in /etc/sudoers.d/grader 
+`ubuntu ALL=(ALL) PASSWD:ALL`in  /etc/sudoers.d/90-cloud-init-users
+
 
 ## Enabled key based Access ##
 ### Created a SSH Directory on remote server ###
@@ -76,6 +87,14 @@ Changed `#User rules for ubuntu` to `grader ALL=(ALL) NOPASSWD:ALL`
 * Allowed http connections on port 80 `sudo ufw allow www`
 * Allowed ntp connections on port 123 `sudo ufw allow ntp`
 * Deleted unwanted rules `sudo ufw delete allow <NAME_OF_SERVICE>`
+* Denied SSH connections on port 22 `sudo ufw deny 22`
+
+### Installed and configured fail2ban on the server ###
+* `sudo apt-get install fail2ban`
+* made sure log paths were all set correctly
+* editd the local jail file `sudo nano /etc/fail2ban/jail.local`
+* Set rules according to these suggestions (in german, sorry)(https://www.thomas-krenn.com/de/wiki/SSH_Login_unter_Debian_mit_fail2ban_absichern?xtxsearchselecthit=1) 
+
 
 ## Deploying my CatalogApp to the server ##
 
@@ -103,10 +122,3 @@ Changed `#User rules for ubuntu` to `grader ALL=(ALL) NOPASSWD:ALL`
 ## Problems left to solve ##
 * It's currently not possible to login with Google or Facebook as both API don't recognize the new ip address and I can't figure out how to change the params
 in the json strings for javascript origin and redirect uri
-
-
-
-
-
-
-
